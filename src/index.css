@@ -11,3 +11,48 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: whitesmoke;
+  color:black;
+  text-align: center;
+  padding-top: 7px;
+}
+.cop{
+ background: rgba(245, 245, 245, 0.925);
+  height: 480px;
+  width: 400px;
+  margin-top:50px;
+  margin-left:500px;
+  
+}
+.dop{
+  padding-top: 10px;
+  margin-left:35px;
+  margin-top:35px;
+ width:40px;
+  height: 50px;
+}
+
+.myl{
+  margin-left:40px;
+  width: 290px;
+}
+.mac {
+  padding-top: 5px;
+  margin-top: 40px;
+  margin-left:500px ;
+  height: 500px;
+  width:400px;
+  border-radius:10px ;
+}
+ 
+.one{
+  height: 450px;
+  width: 400px;
+  border-radius: 20px;
+ 
+}
