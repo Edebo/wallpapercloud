@@ -5,7 +5,10 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import {signup} from '../API/authApi'
 
-
+//   .matches(
+		//  /^(?=.{8,}$)(?=.?[a-z])(?=.?[A-Z])(?=.?[0-9])(?=.?\W).*$/,
+    //       "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+		// ),
 const RegisterSchema = Yup.object().shape({
 	// username:Yup.string()
 	// 	.min(3, "Username must be 3 characters at minimum")
@@ -14,11 +17,8 @@ const RegisterSchema = Yup.object().shape({
       .email("Invalid email address format")
       .required("Email is required"),
     password: Yup.string()
-      .required('Please Enter your password')
-      .matches(
-		 /^(?=.{8,}$)(?=.?[a-z])(?=.?[A-Z])(?=.?[0-9])(?=.?\W).*$/,
-          "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
-		),
+      .required('Please Enter your password'),
+    
 	confirmPassword: Yup.string()
 	.oneOf([Yup.ref('password'), null], 'Passwords must match')
     
@@ -32,7 +32,7 @@ const Register = () => {
         isSucess:false
 	})
 	//destruction connect
-    const { isSucess } = connect
+    const { isSucess,isError } = connect
     //function to connect with signup function
 	const register = (user) =>{
 
@@ -55,12 +55,13 @@ const Register = () => {
   return (
      <Layout>
        {/* design */}
-         <div class="container ">
-            <div class="one my-5 mx-auto bg-light">
+         <div className="container ">
+            <div className="one my-5 mx-auto bg-light">
               {/* end of design */}
-		 {isSucess ? <div class="alert alert-success" role="alert">
+		 {isSucess ? <div className="alert alert-success" role="alert">
 		 <span role='img' aria-label="happy face">😊</span> Signup successful
 </div> : null}
+{isError ? <div className="alert alert-danger"> cannot signup user  </div>:null }
 
      <div className="signup-form container">	
 	 <Formik

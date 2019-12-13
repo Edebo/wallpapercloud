@@ -1,27 +1,36 @@
- const authApi = 'https://movspot.herokuapp.com/'
+ //const authApi = "localhost 9000"
 
-export const signup = (user) =>{
-
-    return fetch(`${authApi}/api/auth/signup`,{
+ export const signup = (user) => {
+console.log(user)
+    return fetch("http://localhost:9000/api/user/signup",{
   method:"POST",
   headers:{
     Accept:"application/json",
     "Content-Type":"application/json"
   },
-  body:JSON.stringify(user)
-})
+  body:JSON.stringify({
+Email:user.email,
+Password:user.password
+  })
+  
+}).then(response =>response.json())
 
 }
 
-export const signin = (user) =>{
+export const signin = user =>{
 
-    return fetch(`${authApi}/api/auth/signin`,{
+    return fetch("http://localhost:9000/api/user/signin",{
   method:"POST",
   headers:{
     Accept:"application/json",
     "Content-Type":"application/json"
   },
-  body:JSON.stringify(user)
-})
+  body:JSON.stringify({
+    Email:user.email,
+    Password:user.password
+      })
+      .then(response =>response.json())
+    })
+
 
 }
